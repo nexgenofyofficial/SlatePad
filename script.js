@@ -35,14 +35,12 @@ const saveToLocalStorage = () => {
   localStorage.setItem("all-notes", notesList.innerHTML);
 };
 
-// Clear All Action Hook
+// Clear All Action Hook with Clean Native Messaging
 clearAllBtn.addEventListener("click", () => {
-    if (notesList.innerHTML === "") {
-        alert("There are no not to delete")
-    } else if (
-    confirm(
-      "Are you sure you want to permanently clear all saved notes from your device?",
-    )
+  if (notesList.children.length === 0) {
+    alert("Your dashboard is already empty. There are no notes to clear.");
+  } else if (
+    confirm("Are you sure you want to permanently delete all saved notes from this device? This action cannot be undone.")
   ) {
     notesList.innerHTML = "";
     localStorage.removeItem("all-notes");
@@ -52,7 +50,7 @@ clearAllBtn.addEventListener("click", () => {
 addNote.addEventListener("click", () => {
   // Check If user didn't type value
   if (!userTitle.value.trim()) {
-    return alert("Please Enter a Title to add Note!");
+    return alert("Please enter a note title before saving.");
   }
 
   // Create Note
