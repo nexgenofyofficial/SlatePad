@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A clean, distraction-free web scratchpad for technical thoughts, code snippets, and quick logs. Offline-first utility with dark-mode aesthetic layout."
+    />
+    <meta
+      name="keywords"
+      content="slatepad, developer scratchpad, clean notes grid, minimal markdown pad, offline local note logger"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234ade80' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='7' y1='8' x2='17' y2='8'%3E%3C/line%3E%3Cline x1='7' y1='12' x2='17' y2='12'%3E%3C/line%3E%3Cline x1='7' y1='16' x2='13' y2='16'%3E%3C/line%3E%3C/svg%3E"
+    />
+    <title>SlatePad — Minimalist Markdown Scratchpad & Note Grid</title>
+  </head>
+  <body>
+    <div class="ambient-glow"></div>
+
+    <!-- Header -->
+    <div class="app-container">
+      <header class="app-header">
+        <h1>SlatePad</h1>
+        <button id="clear-all-btn" class="btn-text">Clear All</button>
+      </header>
+
+      <!-- Create Note -->
+      <button class="notes-body" id="create-note" onclick="createNote()">
+        <i class="fa fa-plus"></i>
+      </button>
+
+      <!-- Add Note -->
+      <div id="create-note-box">
+        <div class="modal-content">
+          <button id="close-modal-btn" class="close-btn">&times;</button>
+
+          <h2>Create New Note</h2>
+
+          <label for="user-title">Title</label>
+          <input type="text" id="user-title" placeholder="Your Note Title..." />
+
+          <label for="user-desc">Description</label>
+          <textarea
+            id="user-desc"
+            placeholder="Your Note Description..."
+          ></textarea>
+
+          <label for="user-category">Category</label>
+          <select name="user-category" id="user-category">
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+          </select>
+
+          <button class="btn" id="add-note">Add Note</button>
+        </div>
+      </div>
+      <!-- All Notes Display here -->
+      <div id="notes-list"></div>
+
+      <p class="empty-message">
+        No notes found. Click the + button to create one!
+      </p>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
+
+<!-- Create, display, delete and save notes
+ - Add date and time with notes
+ - Category (Optional)
+-->
